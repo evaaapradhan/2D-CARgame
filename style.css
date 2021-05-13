@@ -89,7 +89,7 @@ body {
 
 
 .start:hover{
-    background-color: rgb(88 55 55);
+    background-color: coral;
     color: white;
     cursor: pointer;
 }
