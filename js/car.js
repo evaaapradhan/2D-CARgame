@@ -1,9 +1,13 @@
 var score=0;
 
-
+var race= new Audio();
+var crash = new Audio();
+race.src="audio/Racing.mp3";
+crash.src="audio/crash.mp3";
+race.play();
 document.addEventListener('DOMContentLoaded', function() {
- 
-
+    
+   
      document.addEventListener('keydown', function(e) {
          if (e.key == 'ArrowLeft') {
              MoveLeft()
@@ -11,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
          if (e.key == 'ArrowRight') {
              MoveRight()
          }
+        
      })
 
      function MoveLeft() {
@@ -21,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
              console.log(hero)
              hero.style.left = leftPos + 'px';
          }
-
+       
      }
 
 
@@ -47,15 +52,19 @@ document.addEventListener('DOMContentLoaded', function() {
          villianLeft = parseInt(window.getComputedStyle(villian).getPropertyValue('left'))
          villiantop = parseInt(window.getComputedStyle(villian).getPropertyValue('top'))
          score++
-         document.querySelector('#score').innerHTML = 'Score: ' + score
+         
          if (heroLeft == villianLeft && villiantop >= 400) {
+            crash.play();
              alert('Game Over! RELOAD TO RESTART! Your SCORE is ' + score)
+             document.querySelector('#score').innerHTML = 'Score: ' + score
+             
              villian.style.animation = 'none';
              road.style.animation = 'none';
              villian.style.top = villiantop + 'px'
-             console.log(villiantop)
+             console.log(villiantop) 
              clearTimeout(checkDead)
              window.location.reload();
+             
          }
      }, 100)
 
