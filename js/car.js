@@ -4,7 +4,7 @@ var race= new Audio();
 var crash = new Audio();
 race.src="audio/Racing.mp3";
 crash.src="audio/crash.mp3";
-race.play();
+
 document.addEventListener('DOMContentLoaded', function() {
     
    
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
          if (e.key == 'ArrowRight') {
              MoveRight()
          }
-        
+         race.play();
      })
 
      function MoveLeft() {
@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
          score++
          
          if (heroLeft == villianLeft && villiantop >= 400) {
+             race.pause();
             crash.play();
              alert('Game Over! RELOAD TO RESTART! Your SCORE is ' + score)
              document.querySelector('#score').innerHTML = 'Score: ' + score
